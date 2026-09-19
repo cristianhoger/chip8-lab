@@ -1,0 +1,13 @@
+{
+  "editor.inlineSuggest.enabled": false,
+  "editor.suggest.preview": false,
+  "editor.quickSuggestions": {
+    "comments": "off",
+    "strings": "off",
+    "other": "off"
+  },
+  "editor.codeLens": false,
+  "editor.inlayHints.enabled": "off",
+  "rust-analyzer.diagnostics.enable": true,
+  "rust-analyzer.diagnostics.experimental.enable": false
+}
