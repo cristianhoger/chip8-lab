@@ -49,7 +49,8 @@ impl Chip8 {
             }
 
             0x07 => {
-                self.v[x] = self.v[x]+ value;
+
+                self.v[x] = self.v[x].wrapping_add(value);
             }
 
             _ => {
@@ -65,6 +66,18 @@ impl Chip8 {
 
     pub fn get_register(&self, index: usize) -> u8 {
         self.v[index]
+    }
+
+    pub fn print_state(&self) {
+    println!("=== CHIP-8 STATE ===");
+    println!("PC: {:#06X}", self.pc);
+    println!("I:  {:#06X}", self.i);
+
+    for i in 0..16 {
+        println!("V{:X}: {:#04X}", i, self.v[i]);
+    }
+
+    println!("====================");
     }
 
 }
