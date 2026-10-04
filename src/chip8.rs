@@ -28,15 +28,7 @@ impl Chip8 {
         (high_byte << 8) | low_byte
     }
 
-    pub fn read_opcode(&self,opcode: u16)->[u16;3]{
-        
-        let family= (opcode & 0xF000) >> 12;
-        let x= (opcode & 0x0F00) >> 8;
-        let value= opcode & 0x00FF;
 
-        [family,x,value]
-       
-    }
 
     pub fn execute_opcode(&mut self,opcode:u16){
         let family = (opcode & 0xF000) >> 12;
@@ -51,6 +43,11 @@ impl Chip8 {
             0x07 => {
 
                 self.v[x] = self.v[x].wrapping_add(value);
+            }
+
+            0x0A => {
+
+                self.i = (opcode & 0x0FFF);
             }
 
             _ => {
