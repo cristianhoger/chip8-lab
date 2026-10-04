@@ -80,4 +80,12 @@ impl Chip8 {
     println!("====================");
     }
 
+    pub fn cycle(&mut self){
+        let opcode =self.fetch_opcode();
+
+        self.execute_opcode(opcode);
+        self.next_instruction();
+
+    }
+
 }

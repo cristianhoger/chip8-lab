@@ -13,13 +13,8 @@ fn main() {
 
     chip8.load_program(&program);
 
-    let opcode=chip8.fetch_opcode();
-    chip8.execute_opcode(opcode);
-    chip8.next_instruction();
-
-    let opcode=chip8.fetch_opcode();
-    chip8.execute_opcode(opcode);
-    chip8.next_instruction();
+    chip8.cycle();
+    chip8.cycle();
 
     chip8.print_state();
 
