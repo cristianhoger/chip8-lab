@@ -50,6 +50,11 @@ impl Chip8 {
                 self.i = (opcode & 0x0FFF);
             }
 
+            0x01 => {
+
+                self.pc = (opcode & 0x0FFF);
+            }
+
             _ => {
                 println!("Opcode no implementado: {:#06X}",opcode);
             }
@@ -80,8 +85,10 @@ impl Chip8 {
     pub fn cycle(&mut self){
         let opcode =self.fetch_opcode();
 
-        self.execute_opcode(opcode);
         self.next_instruction();
+
+        self.execute_opcode(opcode);
+        
 
     }
 
